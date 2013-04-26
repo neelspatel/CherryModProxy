@@ -1,0 +1,14 @@
+data/cherryproxy/examples/cproxy_blockexe.py.i
+data/setup.py.i
+data/cherryproxy/cherrypy/wsgiserver/__init__.py.i
+data/INSTALL.txt.i
+data/README.txt.i
+data/cherryproxy/__init__.py.i
+data/cherryproxy/README.txt.i
+data/cherryproxy/cherrypy/README.txt.i
+data/cherryproxy/CherryProxy.py.i
+data/install.bat.i
+data/MANIFEST.in.i
+data/cherryproxy/cherrypy/__init__.py.i
+data/cherryproxy/cherrypy/LICENSE.txt.i
+data/cherryproxy/examples/__init__.py.i
