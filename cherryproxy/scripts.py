@@ -13,5 +13,7 @@ def get(arg):
 	#addBookFunction = "function addBook(){alert('inaddbook')}; jQuery('.addBook').click(addBook);"
 	#addPrinterFunction = "function addPrinter(){alert('inaddprinter')}; jQuery('.addPrinter').click(addPrinter);"
 	output += " <script>jQuery(document).ready(function(){function addCoupon() {jQuery('#couponCount').text(parseInt(jQuery('#couponCount').text(), 10)+1); return true;}	" + addBookFunction + addPrinterFunction  + "});</script>"	
+	output += '<style>select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {height: 30px !important;}</style>'
+	output += '<style>body{padding: 0px !important;}</style>'
 	#output += " <script>jQuery(document).ready(function(){alert('in start'); function addCoupon() {alert('hey'); return true;} jQuery('.addCoupon').click(addCoupon);	});</script>"	
 	return output

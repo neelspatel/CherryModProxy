@@ -42,11 +42,11 @@ def get(arg):
 			output += '<div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h3 id="myModalLabel">' + amazon.get(arg) + '</h3></div><div class="modal-body"><p>Special offer from Staples!.</p><p>Buy your printer in Staples instead and get free ink refills for a year!</p></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">No thanks</button><button class="btn btn-primary addPrinter addCoupon" data-dismiss="modal" aria-hidden="true">Save coupon </button></div></div>	'
 
 	if choice == "book":
-		output +=  "<div class = 'alert alert-success' style = 'width:100%; margin-left:-10px !important; margin-top: -20px;'>Hey! Heard about our book buybacks? <b>Learn more.</b> </div>"
+		output +=  "<div class = 'alert alert-success' style = 'width:100%;margin-top: -20px;'>Hey! Heard about our book buybacks? <b>Learn more.</b> </div>"
 	elif choice == "printer":
-		output +=  "<div class = 'alert alert-success' style = 'width:100%; margin-left:-10px !important; margin-top: -20px;'>Buy from Staples and get a year of free ink.  <b>Learn more.</b></div>"
+		output +=  "<div class = 'alert alert-success' style = 'width:100%; margin-top: -20px;'>Buy from Staples and get a year of free ink.  <b>Learn more.</b></div>"
 	else:
-		output += "<div class = 'alert alert-success' style = 'width:100%; margin-left:-10px !important; margin-top: -20px;'>Have you heard about our new warranty?  <b>Learn more.</b></div>"
+		output += "<div class = 'alert alert-success' style = 'width:100%; margin-top: -20px; font-size:115%'>Have you heard about our new warranty?  <b>Learn more.</b></div>"
 	#output += '<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />'
 
 	#output = '<script>$(document).ready(function(){alert("in"); $("#popup").popup("open");});</script>'
