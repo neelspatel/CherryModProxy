@@ -292,22 +292,17 @@ class CherryProxy (object):
 
         if "content-type" in dict(self.resp.headers):
             if "text/html" in  dict(self.resp.headers)["content-type"]:
-                if "gzip" in dict(self.resp.headers)["content-encoding"]:
-                    print "\033[31m\033[1m" + "Here it is: " + "\033[0m\033[0m" + str(self.resp.headers)
-                    olddata = self.resp.data
-                    self.resp.data = zlib.decompress(self.resp.data, 16+zlib.MAX_WBITS)
+                if "content-encoding" in dict(self.resp.headers):
+                    if "gzip" in dict(self.resp.headers)["content-encoding"]:                        
+                        olddata = self.resp.data
+                        self.resp.data = zlib.decompress(self.resp.data, 16+zlib.MAX_WBITS)                                               
+
+                        dictionary = dict(self.resp.headers)
+                        del dictionary["content-encoding"]
+                        self.resp.headers = dictionary.items()                    
                     
-                    self.resp.data =  modify.get(self.resp.data)
-                    #print self.resp.data                    
-                    #self.resp.data = zlib.compress(self.resp.data)
-
-                    dictionary = dict(self.resp.headers)
-                    del dictionary["content-encoding"]
-                    self.resp.headers = dictionary.items()
-
-                    print "\033[31m\033[1m" + olddata + "\033[0m\033[0m" + "\n\n\n\n"
-                    print "\n\n\n\n\n\033[31m\033[1m" + "Next: " + "\033[0m\033[0m" + "\n\n\n\n"
-                    print self.resp.data
+                
+                self.resp.data =  modify.get(self.resp.data, dict(self.req.headers)["host"])
 
             else:
                 print "wrong content\n"        

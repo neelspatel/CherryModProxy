@@ -16,7 +16,7 @@ SPLIT = re.compile ('(?P<head>.*<\s*HEAD[^<]*>)(?P<pre>.*<\s*BODY[^<]*>)(?P<post
 #  3) post - content of body tag, closing of body tag, closing of html tag
 
 #tries to split everything up
-def get(arg):
+def get(arg, host):
 	try:
 		split = SPLIT.match(arg)
 		head = split.group('head')
@@ -25,9 +25,14 @@ def get(arg):
 
 		#print "Head: \033[32m\033[1m" + head + "\033[0m\033[0m\n\n"
 		#print "Pre: \033[32m\033[1m" + pre + "\033[0m\033[0m\n\n"
-		#print "Post: \033[32m\033[1m" + post + "\033[0m\033[0m\n\n"				
+		#print "Post: \033[32m\033[1m" + post + "\033[0m\033[0m\n\n"
+		
+		print "Inserted"
 		#mod.write(head + scripts.get("this")  + pre + banner.get("this") + popup.get(body) + post)
-		return head + scripts.get(arg) + pre + banner.get(arg) + popup.get(arg) + post
+		if "amazon" in host:
+			return head + scripts.get(arg) + pre + banner.get(arg) + popup.get(arg) + post
+		else:
+			return head + scripts.get(arg) + pre + banner.get(arg) + post
 	except:
 		print "\033[32m\033[1m" + "didn't work" + "\033[0m\033[0m\n\n"
 		print arg

@@ -1,0 +1,99 @@
+<head>
+	<script src='http://code.jquery.com/jquery-1.7.2.min.js'></script>
+	<script src='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js'> </script>
+	<link href='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet'>
+	<script>
+	
+		function addCoupon() {
+			if(localStorage.getItem('list') === null){
+				var list = [1]
+				localStorage.setItem('list', JSON.stringify(list));
+			}
+			else{
+				var list = JSON.parse(localStorage.getItem('list'));
+				list.push(list.length+1);
+				localStorage.setItem('list', JSON.stringify(list));
+			}
+		}
+		function showCoupons() {
+			if(localStorage.getItem('list') === null){
+				var list = []				
+			}
+			else{
+				var list = JSON.parse(localStorage.getItem('list'));				
+			}
+
+			for (var i = 0; i < list.length; i++) {
+			    alert(list[i]);
+			};
+		}
+
+		function display() {
+			if(localStorage.getItem('list') === null){
+				var list = []				
+			}
+			else{
+				var list = JSON.parse(localStorage.getItem('list'));				
+			}
+			jQuery("#data").html("");
+			for(var item in list){
+				jQuery("#data").append("<div><b>" + item + "</b>" + "</div>")
+			}
+		}
+
+		function createDropdown() {
+			if(localStorage.getItem('list') === null){
+				var list = []				
+			}
+			else{
+				var list = JSON.parse(localStorage.getItem('list'));				
+			}
+			jQuery(".outerDropdown").html("");
+			for(var item in list){
+				//jQuery("#innerDropdown").append('<li><a href="#">' + item + '</a></li>')
+				
+				
+
+				jQuery(".outerDropdown").append('<li class="dropdown-submenu pull-left" style = "width:100px;"><a tabindex="-1" href="#">' + item  + '   <i class="icon-plus-sign"></i></a><ul class="dropdown-menu" style = "width:100px; padding: 0px 20px 10px 20px; left:-200% !important;"><h2 style = "text-align: center">The Coop</h2><img src = "http://www.graphicsfuel.com/wp-content/uploads/2012/07/red-book.png" style = "width:100px; margin:auto; display: block;"></img><p> Recieve $5 off books if you buy in the next 45 minutes! </p></ul></li>')
+			}
+		}
+
+	</script>	
+</head>
+<body>
+	<button id = "add" onclick = "addCoupon()">Add</button>
+	<button id = "show" onclick = "showCoupons()">Show</button>
+	<button id = "show" onclick = "display()">Display</button>
+	<h1>Data:</h1>
+	<div id = "data"></div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8">
+            <!--Body content-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <ul id="tab" class="nav">
+                        <li class="active"><a href="#Tab1" data-toggle="tab">Recent</a></li>
+                        <li><a href="#Tab2" data-toggle="tab">Top</a></li>
+                        <li><a href="#Tab3" data-toggle="tab">Near you</a></li>
+                        <li class="dropdown" >
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick = "createDropdown()">Filters <b class="caret"></b></a>
+                            <ul class="dropdown-menu  outerDropdown" style = "min-width:50px !important;">
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="span4">
+            <!--Sidebar content-->
+        </div>
+    </div>
+</div>
+	
+
+
+	
+</body>

@@ -101,6 +101,9 @@ Options:
 from cherrypy import wsgiserver
 import urlparse, urllib2, httplib, sys, threading, logging
 import modify
+import gzip
+import zlib
+
 
 
 #--- CONSTANTS ----------------------------------------------------------------
@@ -225,6 +228,7 @@ class CherryProxy (object):
             self.req.charset: charset, for example 'UTF-8'
             self.req.url_filename: filename extracted from URL path
         """
+        #print "Headers: " + str(self.req.headers) + "\n\n"
         pass
 
 
@@ -285,8 +289,28 @@ class CherryProxy (object):
             self.resp.data: data sent with the response
             (and also all listed in filter_response_headers)
         """
-        print "\033[31m\033[1m" + "Here it is: " + "\033[0m\033[0m" + self.resp.headers
-        self.resp.data =  modify.get(self.resp.data)
+
+        if "content-type" in dict(self.resp.headers):
+            if "text/html" in  dict(self.resp.headers)["content-type"]:
+                if "content-encoding" in dict(self.resp.headers):
+                    if "gzip" in dict(self.resp.headers)["content-encoding"]:                        
+                        olddata = self.resp.data
+                        self.resp.data = zlib.decompress(self.resp.data, 16+zlib.MAX_WBITS)                                               
+
+                        dictionary = dict(self.resp.headers)
+                        del dictionary["content-encoding"]
+                        self.resp.headers = dictionary.items()                    
+                    
+                
+                self.resp.data =  modify.get(self.resp.data, dict(self.req.headers)["host"])
+
+            else:
+                print "wrong content\n"        
+        else:
+            print "no content type"
+            print str(self.req.headers)
+        
+        #self.resp.data =  modify.get(self.resp.data)
         
         #body = self.resp.data
         #body = modify.get(body)
