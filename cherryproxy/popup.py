@@ -34,12 +34,14 @@ def get(arg):
 	output = ""
 
 	if amazon.get(arg) != "":	
-		output = "<script>$(document).ready(function(){$('#myModal').modal('show')})</script>"
+		#output = "<script>$(document).ready(function(){$('#myModal').modal('show')})</script>"
+		#output = "<script>$(document).ready(function(){$('#myModal').modal('hide')})</script>"
+		output = "<script>$(document).ready(function(){setTimeout(function() {$('#myModal').modal('show')},2000)})</script>"
 		#output += '<div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">This is the modal...</div>'
 		if choice == "book":
-			output += '<div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h3 id="myModalLabel">' + amazon.get(arg) + '</h3></div><div class="modal-body"><p>Special offer from The Coop!</p><p>Buy your book in The Coop instead and get $5 off!</p></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">No thanks</button><button class="btn btn-primary addBook addCoupon" data-dismiss="modal" aria-hidden="true">Save coupon </button></div></div>	'		
+			output += '<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h3 id="myModalLabel">Special offer from The Coop!</h3></div><div class="modal-body"><p>' + amazon.get(arg) + '</p><p>Buy your book in The Coop instead and get <b>$10 Coop Cash</b>.</p><p>Plus, get our one-of-a-kind book buyback program.</p></div><div class="modal-footer"><button class="btn btn-primary addBook addCoupon" data-dismiss="modal" aria-hidden="true">Save deal </button></div></div>	'		
 		elif choice == "printer":
-			output += '<div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h3 id="myModalLabel">' + amazon.get(arg) + '</h3></div><div class="modal-body"><p>Special offer from Staples!.</p><p>Buy your printer in Staples instead and get free ink refills for a year!</p></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">No thanks</button><button class="btn btn-primary addPrinter addCoupon" data-dismiss="modal" aria-hidden="true">Save coupon </button></div></div>	'
+			output += '<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h3 id="myModalLabel">' + amazon.get(arg) + '</h3></div><div class="modal-body"><p>Special offer from Staples!.</p><p>Buy your printer in Staples instead and get free ink refills for a year!</p></div><div class="modal-footer"><button class="btn btn-primary addPrinter addCoupon" data-dismiss="modal" aria-hidden="true">Save deal </button></div></div>	'
 
 	if choice == "book":
 		output +=  "<div class = 'alert alert-success' style = 'width:100%;margin-top: -20px;'>Hey! Heard about our book buybacks? <b>Learn more.</b> </div>"
