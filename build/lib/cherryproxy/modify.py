@@ -35,5 +35,5 @@ def get(arg, host):
 			return head + scripts.get(arg) + pre + banner.get(arg) + post
 	except:
 		print "\033[32m\033[1m" + "didn't work" + "\033[0m\033[0m\n\n"
-		print arg
+		#print arg
 		return arg

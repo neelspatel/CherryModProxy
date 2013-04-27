@@ -308,7 +308,7 @@ class CherryProxy (object):
                 print "wrong content\n"        
         else:
             print "no content type"
-            print str(self.req.headers)
+            #print str(self.req.headers)
         
         #self.resp.data =  modify.get(self.resp.data)
         
