@@ -305,10 +305,10 @@ class CherryProxy (object):
                 self.resp.data =  modify.get(self.resp.data, dict(self.req.headers)["host"])
 
             else:
-                print "wrong content\n"        
+                #print "wrong content\n"        
         else:
-            print "no content type"
-            print str(self.req.headers)
+            #print "no content type"
+            #print str(self.req.headers)
         
         #self.resp.data =  modify.get(self.resp.data)
         

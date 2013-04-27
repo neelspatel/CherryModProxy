@@ -25,7 +25,7 @@ def get(arg):
 	#output += '<script>$(document).ready(function() {$("#popup").click(function() {alert ("here"); ("#popup").hide();});});</script>'
 	#output += '<script type="text/javascript">$(document).bind("mobileinit", function () {    $.mobile.ajaxEnabled = false;});</script>'
 	
-	print "\033[32m\033[1m" + amazon.get(arg) + "\033[0m\033[0m\n\n"
+	#print "\033[32m\033[1m" + amazon.get(arg) + "\033[0m\033[0m\n\n"
 
 	(choice, number) = choose(arg)
 
